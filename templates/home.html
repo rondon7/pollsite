@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% block custom_css %} 
+<style>
+    body{
+        background-image: url('https://dornsife.usc.edu/assets/img/news/story/3338.jpg');
+        background-size: cover;
+    }
+</style>
+{% endblock custom_css %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="home-content">
+        <h1 style="font-size:5vw;">PollSite</h1>
+        <hr />
+        {% if logged_in %}
+          <h4>Welcome, {{ user }}</h4><h6>You have {{count}} new Poll(s) to participate in.</h6> 
+          <hr />
+        {% endif %}
+        <a class="btn btn-primary btn-lg" href="{% url 'polls:list' %}" role="button">
+            Enter !!
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

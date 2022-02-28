@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block custom_css %} 
+<style>
+    body{
+        background-image: url('https://frepple.com/wp-content/uploads/business-poll-survey2-2401.jpg');
+        background-size: cover;
+    }
+</style>
+{% endblock custom_css %}
+{% block content %}
+<div style="margin-top: 8vw;" class="container">
+    <div class="row center">
+        <div class="col-md-6 offset-md-3" style="border-radius:8px;background-color: rgba(255, 255, 255, 0.9);">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h3 class="text-center">Register</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="{% url 'accounts:login' %}">Login Here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
